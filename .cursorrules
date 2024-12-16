@@ -23,11 +23,12 @@
 
 If I ask for adjustments to code I have provided you, do not repeat all of my code unnecessarily. Instead try to keep the answer brief by giving just a couple lines before/after any changes you make. Multiple code blocks are ok.`
 
-`When changing a function declaration, please add a FIXME comment and indicate which function declaration it was changed from.
+`# Function Declaration Change Rules
 
-For example:
-// FIXME: Changed from void someFunction(int a, int b)
-void someFunction(int a, int b, int c) {
-...
-}
-This will help users understand the changes made to the code more easily.`
+// FIXME: Add a comment above function declarations only when:
+// 1. Function name changes
+// 2. Function parameter changes
+// 3. Access modifier changes
+// Format: // FIXME: Changed from [original declaration]
+// Do NOT add FIXME comments for changes to function implementation/body
+`
