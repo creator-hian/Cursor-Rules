@@ -1,0 +1,78 @@
+---
+description: This rule defines the standard for using TOML format to include structured metadata within Markdown documents. Apply this rule when creating or modifying new ADRs, feature specifications, or other Markdown files requiring TOML frontmatter to consistently write TOML metadata according to the schema defined within +++ delimiters. Related templates can be found in the .cursor/toml-md/ directory.
+globs: 
+alwaysApply: false
+---
++++
+id = "RULE-TOML-MD-FORMAT-V1"
+title = "TOML+Markdown Format Standards"
+context_type = "rules"
+scope = "Standards for using TOML format within Markdown documents"
+target_audience = ["all"]
+granularity = "detailed"
+status = "active"
+last_updated = "2025-04-24"
+tags = ["toml", "markdown", "format", "standards", "metadata", "documentation"]
+related_context = [".cursor/toml-md/README.md"]
++++
+
+# TOML+Markdown (TOML MD) Format Standards
+
+This rule defines the standards for combining machine-readable metadata with human-readable content in Markdown files.
+
+## Scope
+
+- Applies to all agents creating or modifying Markdown files with structured metadata
+- Enforces consistent format across tasks, ADRs, documentation, and context sources
+
+## Core Requirements
+
+### Metadata Format
+- Use TOML syntax for structured metadata
+- Enclose TOML block within triple-plus delimiters (`+++`)
+- Adhere strictly to valid TOML syntax
+- Follow schema defined in templates
+
+### Document Structure
+```markdown
++++
+# TOML frontmatter content
+key = "value"
+# ... other fields specific to document type ...
++++
+
+# Markdown content follows
+...
+```
+
+## Template Usage Guidelines
+
+### Using Existing Templates
+1. Check [README.md](mdc:.cursor/toml-md/README.md) for available templates
+2. Do NOT directly read template directory
+3. Use appropriate template as starting point (e.g., [01_mdtm_feature.md](mdc:.cursor/toml-md/01_mdtm_feature.md), [07_adr.md](mdc:.cursor/toml-md/07_adr.md))
+4. Follow template's TOML schema strictly
+
+### Creating New Templates
+1. Start with [00_boilerplate.md](mdc:.cursor/toml-md/00_boilerplate.md)
+2. Define required TOML metadata fields
+3. Structure Markdown content logically
+4. Save in `.cursor/toml-md/` directory
+5. Update README.md with new template information
+
+## Implementation Rules
+
+### Required Practices
+- Use valid TOML syntax within `+++` blocks
+- Follow document-specific schemas
+- Maintain consistent field names and data types
+- Include all required metadata fields
+
+### Error Prevention
+- Incorrect format or missing delimiters will cause processing errors
+- Schema violations will trigger build step failures
+- Template deviations must be documented and justified
+
+## Reference
+
+For detailed benefits and usage guidelines, refer to [README.md](mdc:.cursor/toml-md/README.md)

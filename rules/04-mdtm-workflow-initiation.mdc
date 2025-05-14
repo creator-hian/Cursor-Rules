@@ -1,0 +1,70 @@
+---
+description: Refer to the MDTM workflow rule when managing complex multi-step tasks, projects requiring detailed progress tracking, or high-risk changes that need clear handoffs between team members. This rule provides a methodology for defining and systematically managing tasks using structured Markdown documents. Apply this approach when dealing with highly complex tasks or when documented tracking is essential.
+globs: 
+alwaysApply: false
+---
++++
+id = "RULE-MDTM-WORKFLOW-INIT-V1"
+title = "Standard MDTM Task Creation & Delegation Workflow"
+context_type = "rules"
+scope = "Creating and delegating tasks via the TOML-based MDTM system"
+target_audience = ["all"]
+granularity = "procedure"
+status = "active"
+last_updated = "2025-04-24"
+tags = ["mdtm", "toml", "workflow", "delegation", "task-creation", "coordination", "rules"]
+related_context = [
+    ".cursor/rules/01-standard-toml-md-format.mdc",
+    ".cursor/rules/06-iterative-execution-policy.mdc"
+]
+relevance = "High: Defines core task delegation process"
++++
+
+# Standard: MDTM Task Creation & Delegation Workflow
+
+This rule defines the standard procedure for creating Markdown-Driven Task Management (MDTM) task files (using TOML frontmatter) and delegating work when detailed tracking is required.
+
+**Applies To:** All contexts where structured task management is needed.
+
+**1. When to Use MDTM:**
+
+*   Initiate this MDTM workflow for tasks that meet criteria such as:
+    *   Complexity (multi-step, involves dependencies).
+    *   Requires detailed progress tracking or auditing.
+    *   High-risk changes (core logic, infrastructure, security).
+    *   Requires clear handoffs between different parts of a project.
+*   If unsure, **err on the side of using MDTM** for better tracking.
+
+**2. Procedure for Task Creation:**
+
+1.  **Generate Task ID:** Create a unique task ID following the convention `TASK-[PREFIX]-[YYYYMMDD-HHMMSS]` (e.g., `TASK-FEAT-20250422-140500`).
+2.  **Select Template:** Choose the appropriate MDTM template from `.cursor/toml-md/` directory.
+3.  **Determine Path:** Construct the full path for the new task file within the task structure (e.g., `.cursor/tasks/FEATURE_Login/TASK-FEAT-20250422-140500.md`).
+4.  **Prepare Content:**
+    *   **TOML Frontmatter:** Populate the `+++` block with essential metadata, adhering strictly to TOML syntax (Rule `01-standard-toml-md-format.md`). Include at minimum:
+        *   `id`: The generated Task ID.
+        *   `title`: Clear, concise task title.
+       *   `status`: Set initially to `"🟡 To Do"` (or `"Pending"`).
+        *   `type`: The appropriate task type (e.g., `"🌟 Feature"`, `"🐞 Bug"`).
+        *   `assigned_to`: The person or team responsible.
+        *   `related_docs`: List paths to requirements, specs, etc.
+        *   `tags`: Relevant keywords.
+    *   **Markdown Body:** Fill in the Markdown sections (Description, Acceptance Criteria, Checklist). Define clear, actionable checklist items (`- [ ] Step description`).
+5.  **Create Task File:** Create the MDTM task file at the determined path with the prepared TOML and Markdown content.
+6.  **Log Creation:** Log the creation of the task file (including its path) according to your project's standard logging procedures.
+7.  **Delegate Task:** Clearly communicate the task to the assigned person or team, referencing the full path to the created Markdown file.
+
+**3. Responsibility of Assigned Person/Team:**
+
+*   When receiving a task referencing an MDTM task file:
+    1.  Read the content of the specified task file path.
+    2.  Perform the work described in the Markdown body, following the checklist items.
+    3.  Update the Markdown checklist (`- [ ]` -> `- [x]`) as steps are completed.
+    4.  Add brief notes/logs to document progress and important decisions.
+    5.  Update the `status` field in the **TOML block** of the task file upon completion (`"Done"`) or if blocked (`"Blocked"`), along with the `updated_date`.
+    6.  Report the final outcome back to the initiator, referencing the MDTM task file path.
+
+**Failure to create the MDTM file before delegation, or failure to update the assigned file, breaks the tracking process.** This workflow is essential for managing complex tasks.
+
+
+

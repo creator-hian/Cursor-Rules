@@ -1,0 +1,100 @@
+---
+description: 
+globs: *.cs
+alwaysApply: false
+---
++++
+id = "RULE-CSHARP-STANDARDS-V1"
+title = "C# Coding Rules"
+context_type = "rules"
+scope = "Standards specific to C# language and .NET framework development"
+target_audience = ["all"]
+granularity = "detailed"
+status = "active"
+last_updated = "2025-04-24"
+tags = ["c-sharp", "dotnet", "coding", "standards", "unity"]
+related_context = [
+    ".cursor/rules/12-code-guidelines.mdc"
+]
++++
+
+# C# Coding Rules
+
+Refer to these rules when working with C# code, .NET frameworks, or Unity development. These guidelines provide specific conventions and best practices for C# development to ensure consistent, maintainable, and high-quality code. Apply these rules when creating, modifying, or reviewing C# code in addition to the general code guidelines.
+
+## 1. Language and Framework
+
+- Use C# language and .NET framework
+- Leverage C# 9 and .NET 4 features in all code examples
+
+## 2. Core Principles
+
+- Avoid null coalescing operators in C# code
+- When writing C# code, prefer explicit null checks
+- Follow object-oriented programming (OOP) and SOLID principles
+- Use meaningful and descriptive variable and method names
+- Incorporate Fluent Validation for request and model validation
+
+## 3. Conventions
+
+- Enable strict mode in all code
+- Default to private as the access modifier unless otherwise specified
+- Use Entity Framework Core for database operations
+- Use Fluent Validation for input validation instead of manual checks
+- Log errors and events using UnityEngine.Debug with structured logging
+
+## 4. Best Practices
+
+### 4.1 Validation
+
+- Use Fluent Validation for clean and reusable validation logic
+
+### 4.2 Logging
+
+- Use UnityEngine.Debug for structured logging
+- Configure logging to write to multiple sinks (e.g., file, console, and database)
+
+### 4.3 Authentication and Authorization
+
+- Implement role-based authorization for endpoints
+
+### 4.4 Database Operations
+
+- Use LINQ for complex queries
+- Implement the Repository pattern for the data access layer
+- Use database migrations for schema management
+
+### 4.5 Error Handling
+
+- Implement global exception handling middleware
+- Return standardized error responses in APIs
+
+### 4.6 Performance
+
+- Optimize performance with caching (e.g., MemoryCache or Redis)
+- Use asynchronous programming for I/O-bound operations
+
+### 4.7 Testing
+
+- Write unit tests for business logic and validation
+- Use integration tests for API endpoints
+
+### 4.8 Security
+
+- Secure sensitive data using encryption
+- Implement CSRF protection and validate all input data
+
+### 4.9 API Standards
+
+- Use RESTful conventions for API design
+- Apply API versioning for backward compatibility
+
+## 5. Unity-Specific Guidelines
+
+- Follow the MVP pattern where applicable
+- Use routing to define API endpoints when relevant
+- Handle repeated tasks using background services or scheduling libraries (e.g., Hangfire)
+- Document APIs with Swagger (OpenAPI) when applicable
+
+These guidelines ensure consistent, maintainable, and high-quality C# code across the project, with special considerations for Unity-based development.
+

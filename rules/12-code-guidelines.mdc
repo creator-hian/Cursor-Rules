@@ -1,0 +1,68 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
++++
+id = "RULE-CODE-GUIDELINES-V1"
+title = "Language and General Code Guidelines"
+context_type = "rules"
+scope = "Standards for language usage and general code quality"
+target_audience = ["all"]
+granularity = "detailed"
+status = "active"
+last_updated = "2025-04-24"
+tags = ["language", "code", "guidelines", "standards"]
+related_context = [
+    ".cursor/rules/03-standard-tool-use-xml-syntax.mdc",
+    ".cursor/rules/05-os-aware-commands.mdc"
+]
++++
+
+# Language and General Code Guidelines
+
+## 1. Language Usage
+
+- **Internal Process**: All internal reasoning, planning, analysis, and tool use MUST be conducted strictly in English.
+- **User Output**: Only the final user-facing response should be translated into Korean.
+- **No Exceptions**: Absolutely no Korean language is allowed in internal thoughts, chain-of-thought, or intermediate outputs.
+- **Sequential Thinking**: Break down complex problems into step-by-step thoughts, all in English.
+
+## 2. General Code Guidelines
+
+### 2.1 Code Quality Principles
+
+- **Verify Information**: Always verify information before presenting it
+- **Preserve Existing Code**: Don't remove unrelated code or functionalities
+- **Error Handling**: Implement robust error handling and logging where necessary
+- **Modular Design**: Follow modular design principles for maintainability
+- **Version Compatibility**: Ensure compatibility with specified language versions
+- **Performance**: Consider and prioritize code performance where applicable
+- **Security**: Always consider security implications when modifying code
+
+### 2.2 Code Readability
+
+- **Variable Names**: Use descriptive, explicit variable names over short, ambiguous ones
+- **Consistent Style**: Adhere to existing project coding style for consistency
+- **Avoid Magic Numbers**: Replace hardcoded values with named constants
+- **Edge Cases**: Consider and handle potential edge cases
+- **Use Assertions**: Include assertions to validate assumptions
+- **Test Coverage**: Include appropriate unit tests for new or modified code
+
+### 2.3 Interaction Guidelines
+
+- **File-by-File Changes**: Make changes file by file and give users chance to spot mistakes
+- **No Apologies**: Never use apologies
+- **No Understanding Feedback**: Avoid giving feedback about understanding in comments
+- **No Whitespace Suggestions**: Don't suggest whitespace changes
+- **No Summaries**: Don't summarize changes made
+- **Focused Changes**: Don't invent changes other than what's explicitly requested
+- **No Unnecessary Confirmations**: Don't ask for confirmation of information already provided
+- **Single Chunk Edits**: Provide all edits in a single chunk for the same file
+- **No Implementation Checks**: Don't ask to verify implementations visible in the context
+- **No Unnecessary Updates**: Don't suggest changes when no modifications are needed
+- **Provide Real File Links**: Always provide links to real files, not context-generated ones
+- **Check Context File Content**: Remember to check context-generated file contents
+
+By following these guidelines, we ensure high-quality, consistent, and maintainable code throughout the project, regardless of the specific programming language used.
+

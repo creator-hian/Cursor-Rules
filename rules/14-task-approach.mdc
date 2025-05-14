@@ -1,0 +1,81 @@
+---
+description: Refer to this methodology when approaching complex, multi-faceted tasks that would benefit from systematic decomposition and planning. This rule provides a structured framework for breaking down large problems into manageable pieces, establishing dependencies, and creating a clear execution plan. Apply this approach when working on tasks requiring extensive code generation, multiple interconnected components, or comprehensive information gathering and analysis.
+globs: 
+alwaysApply: false
+---
++++
+id = "RULE-TASK-APPROACH-V1"
+title = "Task Approach Methodology"
+context_type = "rules"
+scope = "Guidelines for decomposing and approaching complex tasks"
+target_audience = ["all"]
+granularity = "procedure"
+status = "active"
+last_updated = "2025-04-24"
+tags = ["task", "methodology", "decomposition", "planning", "workflow"]
+related_context = [
+    ".cursor/rules/04-mdtm-workflow-initiation.mdc",
+    ".cursor/rules/06-iterative-execution-policy.mdc"
+]
++++
+
+# Task Approach Methodology
+
+Refer to this methodology when approaching complex, multi-faceted tasks that would benefit from systematic decomposition and planning. This rule provides a structured framework for breaking down large problems into manageable pieces, establishing dependencies, and creating a clear execution plan. Apply this approach when working on tasks requiring extensive code generation, multiple interconnected components, or comprehensive information gathering and analysis.
+
+## Purpose
+
+To establish a consistent approach for breaking down complex tasks into manageable subtasks, ensuring efficient execution and clear organization.
+
+## Task Decomposition Process
+
+1. **Initial Analysis**:
+
+   - Upon receiving a complex task, analyze its scope and requirements
+   - Identify the primary goal and any constraints
+
+2. **Decomposition**:
+
+   - Break down the task into logical, manageable subtasks
+   - For each subtask, define:
+     - Clear objective
+     - Step-by-step instructions
+     - Acceptance criteria
+     - Estimated complexity
+
+3. **Dependency Identification**:
+
+   - Explicitly map dependencies between subtasks
+   - Determine which subtasks must be completed before others can begin
+   - Create a logical execution sequence
+
+4. **Resource Planning**:
+   - Identify necessary tools, references, or external resources for each subtask
+   - Determine if specialized knowledge or tools are required
+
+## Search-Based Tasks
+
+For tasks requiring current or comprehensive information:
+
+1. **Information Gathering**:
+
+   - Identify reliable sources for the requested information
+   - When appropriate, use search tools to gather up-to-date information
+   - Collect the latest 5-7 relevant information points about the topic
+
+2. **Information Analysis**:
+
+   - Evaluate the collected information for relevance and accuracy
+   - Identify patterns, contradictions, or gaps in the information
+   - Synthesize findings into actionable insights
+
+3. **Workflow Optimization**:
+   - Explicitly identify what's needed to optimize workflow and task prioritization
+   - Establish a clear execution plan based on the gathered information
+
+## Implementation
+
+After planning, proceed with execution following the task decomposition structure, checking off subtasks as they are completed and adjusting the plan as needed based on findings during implementation.
+
+This methodology ensures tasks are approached systematically, with clear organization and efficient execution.
+

@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
++++
+id = "RULE-USER-PREFERENCES-V1"
+title = "User Preferences"
+context_type = "rules"
+scope = "Defines user-specific settings and profile information for customization"
+target_audience = ["all"]
+granularity = "detailed"
+status = "active"
+last_updated = "2025-04-24"
+tags = ["user", "preferences", "settings", "customization", "language"]
+related_context = []
++++
+
+# User Preferences
+
+This rule defines user-specific settings and profile information to customize AI model behavior and responses according to user preferences.
+
+## Core Settings
+
+- user_name is required
+- skills list is optional and defines the user's technology stack
+- all settings should reflect the user's work environment and preferences
+
+## Language Preferences
+
+- default_language: en (default)
+- input_language: en (user input language)
+- output_language: ko (AI response language)
+
+## Interaction Settings
+
+- verbosity_level must be one of: "concise", "normal", "verbose"
+- auto_execute_commands determines whether commands run automatically
+- mcp_github_install_declined indicates if GitHub MCP installation was declined
+
+## Context Management
+
+- additional contexts are defined in the contexts array
+- all settings apply globally and affect the entire project
+
+## Usage Notes
+
+1. These settings apply globally across all projects
+2. Language settings determine AI response format
+3. Settings can be modified at any time and take effect immediately
+
+## Implementation Guidelines
+
+- All preferences should be explicitly defined
+- Default values should be used when specific preferences are not set
+- Language preferences take precedence over global settings
+- Security-related settings cannot be overridden by project-specific rules
+
+
+
