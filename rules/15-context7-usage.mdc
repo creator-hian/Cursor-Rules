@@ -1,0 +1,110 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
++++
+id = "RULE-CONTEXT7-USAGE-V1"
+title = "Context7 MCP Usage Rule"
+context_type = "rules"
+scope = "Mandatory usage of Context7 MCP for all code-related tasks"
+target_audience = ["all"]
+granularity = "detailed"
+status = "active"
+last_updated = "2025-04-24"
+tags = ["context7", "mcp", "code", "libraries", "documentation", "best-practices"]
+related_context = [
+    ".cursor/rules/12-code-guidelines.mdc",
+    ".cursor/rules/13-csharp-rules.mdc"
+]
++++
+
+# Context7 MCP Usage Rule
+
+Refer to this rule when performing any code-related tasks to ensure Context7 MCP is used for accessing the latest library documentation and best practices. This rule is mandatory for maintaining code quality and accuracy in development work.
+
+## Scope of Application
+
+This rule applies to all code-related tasks including:
+
+- **New Code Development**: Writing new functions, classes, or modules
+- **Code Modification**: Updating existing code and refactoring
+- **Library Usage**: Implementing third-party libraries or frameworks
+- **API Integration**: Working with external APIs or services
+- **Framework Implementation**: Using development frameworks
+- **Debugging & Troubleshooting**: Solving code-related issues
+
+## Mandatory Requirements
+
+### **Required Phrase**
+Before starting any code-related task, you **MUST** include the following phrase:
+
+```
+use context7
+```
+
+### **Context7 Usage Procedure**
+
+1. **Library Identification**:
+   - Identify the library or framework to be used
+   - Use `resolve-library-id` tool to obtain Context7-compatible library ID
+
+2. **Documentation Retrieval**:
+   - Use `get-library-docs` tool to fetch the latest documentation
+   - Request specific documentation topics relevant to the task
+
+3. **Implementation**:
+   - Apply best practices based on retrieved documentation
+   - Follow recommended patterns and methodologies
+
+## Exception Cases
+
+Context7 usage may be omitted **ONLY** in the following cases:
+
+- **Internal Utility Functions**: Project-specific helper functions or internal logic
+- **Basic Language Syntax**: Variable declarations, conditionals, loops, and basic language constructs
+- **Configuration Files**: Simple JSON, YAML, XML configuration files
+- **Documentation**: Writing README files, comments, or documentation
+
+## Implementation Examples
+
+### ✅ **Correct Usage**
+```markdown
+use context7
+
+I need to implement state management in a React component using hooks.
+```
+
+### ❌ **Incorrect Usage**
+```markdown
+Please implement React hooks for state management.
+```
+
+## Quality Assurance
+
+This rule ensures:
+
+- **Up-to-date Information**: Access to the latest library versions and features
+- **Accuracy**: Implementation based on official documentation
+- **Best Practices**: Application of community-approved patterns
+- **Compatibility**: Prevention of version compatibility issues
+
+## Monitoring and Compliance
+
+- Verify Context7 usage before code-related tasks
+- Review accuracy of library implementations
+- Check adherence to latest documentation standards
+- Ensure proper tool utilization workflow
+
+## Integration with Existing Rules
+
+This rule works in conjunction with:
+- [Code Guidelines](mdc:.cursor/rules/12-code-guidelines.mdc) for general coding standards
+- [C# Rules](mdc:.cursor/rules/13-csharp-rules.mdc) for language-specific requirements
+
+**Failure to follow this rule may result in outdated implementations, deprecated patterns, or compatibility issues.**
+
+
+
+
+
