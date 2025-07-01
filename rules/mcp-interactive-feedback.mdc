@@ -4,23 +4,101 @@ globs:
 alwaysApply: true
 ---
 +++
-id = "MCP-INTERACTIVE-FEEDBACK-V1"
-title = "MCP Interactive Feedback Rules"
+id = "MCP-INTERACTIVE-FEEDBACK-V2"
+title = "MCP Interactive Feedback Rules (Enhanced)"
 context_type = "rules"
-scope = "Defines rules for using MCP interactive feedback tool."
+scope = "Defines enhanced rules for using MCP interactive feedback tool with improved termination conditions."
 target_audience = ["all"]
 granularity = "detailed"
 status = "active"
-last_updated = "2024-05-24"
-tags = ["mcp", "feedback", "interactive", "rules"]
+last_updated = "2025-07-01"
+tags = ["mcp", "feedback", "interactive", "rules", "enhanced"]
 related_context = []
 +++
 
-# MCP Interactive Feedback Rules
+# MCP Interactive Feedback Rules (Enhanced Version)
 
-1. During any process, task, or conversation, whether asking, responding, or completing stage tasks, must call MCP mcp-feedback-enhanced.
-2. When receiving user feedback, if feedback content is not empty, must call MCP mcp-feedback-enhanced again and adjust behavior based on feedback.
-3. Only when user explicitly indicates "end" or "no more interaction needed" can you stop calling MCP mcp-feedback-enhanced, then the process is complete.
-4. Unless receiving end command, all steps must repeatedly call MCP mcp-feedback-enhanced.
+## Core Usage Rules
 
-5. Before completing the task, use the MCP mcp-feedback-enhanced to ask the user for feedback.
+1. **Mandatory Feedback Collection**: During any process, task, or conversation, whether asking, responding, or completing staged tasks, you MUST call the `mcp-feedback-enhanced` interactive_feedback tool to collect user feedback.
+
+2. **Continuous Interaction**: Unless receiving termination instructions (explicit or implicit), all steps must repeatedly call the interactive feedback tool.
+
+3. **Feedback-Based Continuation**: When user feedback is received, if the feedback content indicates continuation intent, you must call the tool again and adjust behavior based on the feedback content.
+
+## Enhanced Termination Conditions
+
+The process can be terminated when ANY of the following conditions are met:
+
+### 4. Explicit Termination Expressions
+- "end"
+- "no more interaction needed"  
+- "stop"
+- "terminate"
+- "finish"
+- "done"
+
+### 5. Completion/Satisfaction Expressions
+- "task completed"
+- "work is finished"
+- "looks good"
+- "that's perfect"
+- "thank you"
+- "thanks"
+- "sufficient"
+- "enough"
+
+### 6. Positive Confirmation (without additional requests)
+- "good"
+- "okay"
+- "fine"
+- "understood"
+- "got it"
+- "I see"
+
+### 7. Empty Feedback or Timeout
+- No response from user
+- Empty feedback content
+- Timeout reached
+
+## Implementation Guidelines
+
+### 8. Semantic Interpretation
+- Analyze the semantic meaning of user feedback, not just surface text matching
+- Consider context and intent behind user responses
+- Recognize various cultural expressions of completion/satisfaction
+
+### 9. Graceful Termination Process
+When completion intent is detected:
+- Provide a final confirmation: "I understand the task is completed. Please let me know if you need anything else."
+- Make one final feedback call for confirmation
+- Terminate gracefully if no additional requests are made
+
+### 10. Summary Requirements
+- Always summarize completed work
+- Provide project directory information through the tool's parameters
+- Enable users to understand what has been accomplished
+
+## Examples of Termination Scenarios
+
+**Scenario 1**: User says "작업을 완료하였다" (Task completed)
+- ✅ **Action**: Recognize as completion intent, provide final confirmation, then terminate
+
+**Scenario 2**: User says "괜찮습니다" (It's fine/okay)
+- ✅ **Action**: Interpret as satisfaction, confirm completion, then terminate
+
+**Scenario 3**: User provides specific feedback with requests
+- ❌ **Action**: Continue interaction, implement feedback, call tool again
+
+**Scenario 4**: User says "더 필요한 게 있어?" (Do you need anything more?)
+- ✅ **Action**: Interpret as completion check, provide summary and terminate if no additional needs
+
+## Error Prevention
+
+- **Avoid infinite loops**: Do not continue calling the tool indefinitely when completion intent is clear
+- **Context awareness**: Consider the overall conversation context when interpreting feedback
+- **User experience**: Prioritize natural conversation flow over rigid rule adherence
+
+## Version History
+- **V1**: Basic feedback collection rules
+- **V2**: Enhanced with expanded termination conditions and semantic interpretation
