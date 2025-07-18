@@ -1,44 +1,58 @@
 ---
-description: 
-globs: 
 alwaysApply: true
 ---
 +++
-id = "MCP-INTERACTIVE-FEEDBACK-V2"
-title = "MCP Interactive Feedback Rules (Enhanced)"
+id = "MCP-INTERACTIVE-FEEDBACK-V3"
+title = "MCP Interactive Feedback Rules (Enhanced with Korean Support)"
 context_type = "rules"
-scope = "Defines enhanced rules for using MCP interactive feedback tool with improved termination conditions."
+scope = "Defines enhanced rules for using MCP interactive feedback tool with mandatory completion feedback."
 target_audience = ["all"]
 granularity = "detailed"
 status = "active"
 last_updated = "2025-07-01"
-tags = ["mcp", "feedback", "interactive", "rules", "enhanced"]
+tags = ["mcp", "feedback", "interactive", "rules", "enhanced", "korean"]
 related_context = []
 +++
 
-# MCP Interactive Feedback Rules (Enhanced Version)
+# MCP Interactive Feedback Rules (Enhanced with Korean Support)
+
+## 🚨 CRITICAL: Mandatory Feedback Collection on Task Completion
+
+### **Absolute Rule: Always Call `mcp-feedback-enhanced` After Any Work Completion**
+
+1. **Immediate Feedback Collection After Task Completion**: After completing ANY task (coding, analysis, explanation, file creation/modification, etc.), you MUST call the `mcp-feedback-enhanced` tool's `interactive_feedback` function to collect user feedback.
+
+2. **No Exceptions**: This applies to all task completion points regardless of task size or complexity.
+
+3. **Feedback-Based Improvement**: If feedback indicates additional work is needed, continue the process and collect feedback again upon completion.
 
 ## Core Usage Rules
 
-1. **Mandatory Feedback Collection**: During any process, task, or conversation, whether asking, responding, or completing staged tasks, you MUST call the `mcp-feedback-enhanced` interactive_feedback tool to collect user feedback.
+4. **Mandatory Feedback Collection**: During any process, task, or conversation, whether asking, responding, or completing staged tasks, you MUST call the `mcp-feedback-enhanced` interactive_feedback tool to collect user feedback.
 
-2. **Continuous Interaction**: Unless receiving termination instructions (explicit or implicit), all steps must repeatedly call the interactive feedback tool.
+5. **Continuous Interaction**: Unless receiving termination instructions (explicit or implicit), all steps must repeatedly call the interactive feedback tool.
 
-3. **Feedback-Based Continuation**: When user feedback is received, if the feedback content indicates continuation intent, you must call the tool again and adjust behavior based on the feedback content.
+6. **Feedback-Based Continuation**: When user feedback is received, if the feedback content indicates continuation intent, you must call the tool again and adjust behavior based on the feedback content.
 
 ## Enhanced Termination Conditions
 
 The process can be terminated when ANY of the following conditions are met:
 
-### 4. Explicit Termination Expressions
+### 7. Explicit Termination Expressions (Including Korean)
 - "end"
 - "no more interaction needed"  
 - "stop"
 - "terminate"
 - "finish"
 - "done"
+- "끝"
+- "종료" 
+- "완료"
+- "그만"
+- "충분해"
+- "됐어"
 
-### 5. Completion/Satisfaction Expressions
+### 8. Completion/Satisfaction Expressions (Including Korean)
 - "task completed"
 - "work is finished"
 - "looks good"
@@ -47,50 +61,67 @@ The process can be terminated when ANY of the following conditions are met:
 - "thanks"
 - "sufficient"
 - "enough"
+- "작업 완료"
+- "잘했어"
+- "좋아"
+- "괜찮아" 
+- "고마워"
+- "감사해"
+- "만족해"
 
-### 6. Positive Confirmation (without additional requests)
+### 9. Positive Confirmation (without additional requests)
 - "good"
 - "okay"
 - "fine"
 - "understood"
 - "got it"
 - "I see"
+- "좋다"
+- "알겠어"
+- "이해했어"
+- "맞아"
 
-### 7. Empty Feedback or Timeout
+### 10. Empty Feedback or Timeout
 - No response from user
 - Empty feedback content
 - Timeout reached
 
 ## Implementation Guidelines
 
-### 8. Semantic Interpretation
-- Analyze the semantic meaning of user feedback, not just surface text matching
-- Consider context and intent behind user responses
-- Recognize various cultural expressions of completion/satisfaction
+### 11. Task Completion Detection and Feedback Call Process
+```
+Task Execution → Task Completion → Immediately Call mcp-feedback-enhanced → 
+Collect Feedback → Continue if Additional Work Needed / Terminate if Completion Confirmed
+```
 
-### 9. Graceful Termination Process
+### 12. Semantic Interpretation
+- Analyze the semantic meaning of user feedback, not just surface text matching
+- Consider Korean language expression diversity (formal/informal speech, indirect expressions)
+- Recognize cultural expressions of completion/satisfaction in Korean context
+
+### 13. Graceful Termination Process
 When completion intent is detected:
-- Provide a final confirmation: "I understand the task is completed. Please let me know if you need anything else."
+- Provide final confirmation: "I understand the task is completed. Please let me know if you need anything else."
 - Make one final feedback call for confirmation
 - Terminate gracefully if no additional requests are made
 
-### 10. Summary Requirements
+### 14. Summary Requirements
 - Always summarize completed work
 - Provide project directory information through the tool's parameters
 - Enable users to understand what has been accomplished
 
 ## Examples of Termination Scenarios
 
-**Scenario 1**: User says "작업을 완료하였다" (Task completed)
+**Scenario 1**: User responds "작업을 완료하였다" (Task completed)
 - ✅ **Action**: Recognize as completion intent, provide final confirmation, then terminate
 
-**Scenario 2**: User says "괜찮습니다" (It's fine/okay)
+**Scenario 2**: User responds "괜찮습니다" (It's fine/okay)
 - ✅ **Action**: Interpret as satisfaction, confirm completion, then terminate
 
 **Scenario 3**: User provides specific feedback with requests
 - ❌ **Action**: Continue interaction, implement feedback, call tool again
 
-**Scenario 4**: User says "더 필요한 게 있어?" (Do you need anything more?)
+**Scenario 4**: User asks "더 필요한 게 있어?" (Do you need anything more?)
 - ✅ **Action**: Interpret as completion check, provide summary and terminate if no additional needs
 
 ## Error Prevention
@@ -99,6 +130,15 @@ When completion intent is detected:
 - **Context awareness**: Consider the overall conversation context when interpreting feedback
 - **User experience**: Prioritize natural conversation flow over rigid rule adherence
 
+## 🎯 Core Execution Checklist
+
+- [ ] Always call `mcp-feedback-enhanced` upon task completion
+- [ ] Analyze user feedback semantically
+- [ ] Consider Korean language expression diversity
+- [ ] Graceful termination when completion intent detected
+- [ ] Provide project context and summary
+
 ## Version History
 - **V1**: Basic feedback collection rules
-- **V2**: Enhanced with expanded termination conditions and semantic interpretation
+- **V2**: Enhanced with expanded termination conditions and semantic interpretation  
+- **V3**: Korean language support and mandatory completion feedback rules+++
